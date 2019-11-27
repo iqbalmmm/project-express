@@ -102,6 +102,6 @@ app.get("/hello", (request, response, next) => {
   });
 });
 
-app.listen(3000, () =>
-  console.log("Express server is ready on localhost: 3000")
+app.listen(process.env.PORT, () =>
+  console.log("Express server is ready on localhost: " + process.env.PORT)
 );
