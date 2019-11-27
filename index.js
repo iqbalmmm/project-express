@@ -1,8 +1,9 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 
-const todoList = [
+let todoList = [
   {
     id: 1,
     task: "learn express",
@@ -23,7 +24,7 @@ app.use(bodyParser.json());
 // get all todo list
 
 app.get("/", (req, res) => {
-  res.send(todoList);
+  res.send({ message: "halooo Hotman", todoList });
 });
 
 app.get("/id", (req, res) => {
@@ -50,7 +51,7 @@ app.post("/", (req, res) => {
     };
     todoList.push(newTodo);
     res.status(200).send({
-      message: "todo successfully added",
+      message: "Haloooooo Guys!",
       todoList
     });
   } catch (error) {
@@ -60,7 +61,7 @@ app.post("/", (req, res) => {
 
 // delete todo by its id
 
-app.delete("/: id", (req, res) => {
+app.delete("/:id", (req, res) => {
   try {
     const idToDelete = req.params.id;
     let newTodo = todoList.filter(item => item.id !== parseInt(idToDelete));
